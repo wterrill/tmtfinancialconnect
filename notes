@@ -1,0 +1,7 @@
+firebase login
+firebase init
+-> Hosting (spacebar)
+public directory -> build/web
+single page -> y
+
+firebase deploy --only Hosting
