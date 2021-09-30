@@ -12,10 +12,10 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute('/post', child: (_, __) => HomePage()),
     ChildRoute('/',
-        child: (_, args) => PostPage(id: args.queryParams['data'] as String)),
+        child: (_, args) => PostPage(data: args.queryParams['data'] as String)),
     ChildRoute('/test',
-        child: (_, args) => PostPage(id: args.queryParams['data'] as String)),
+        child: (_, args) => PostPage(data: args.queryParams['data'] as String)),
     ChildRoute('/andrea',
-        child: (_, args) => PostPage(id: args.queryParams['data'] as String)),
+        child: (_, args) => PostPage(data: args.queryParams['data'] as String)),
   ];
 }

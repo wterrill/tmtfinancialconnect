@@ -1,2 +1,2 @@
-flutter build web
-firebase deploy --only hosting
+flutter build web --dart-define=Dart2jsOptimization=O0
+firebase deploy --only hosting 

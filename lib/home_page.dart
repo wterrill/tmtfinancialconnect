@@ -19,7 +19,8 @@ class HomePage extends StatelessWidget {
               child: Text('Open Quickbooks Authenticationn'),
               onPressed: () {
                 js.context.callMethod('open', [
-                  'https://quickbooksrestfulapi.azure-api.net/api/qbo/ConnectQBO',
+                  // 'https://quickbooksrestfulapi.azure-api.net/api/qbo/ConnectQBO',
+                  'https://mxoapptesting.azurewebsites.net/api/qbo/ConnectQBO',
                   '_self'
                 ]); //<= find explanation below
               },
