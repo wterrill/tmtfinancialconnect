@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             FlatButton(
               color: Colors.blue,
-              child: Text('Open Quickbooks Authenticationn'),
+              child: Text('Open Quickbooks Authentication'),
               onPressed: () {
                 js.context.callMethod('open', [
                   // 'https://quickbooksrestfulapi.azure-api.net/api/qbo/ConnectQBO',

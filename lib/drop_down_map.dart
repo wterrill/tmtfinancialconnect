@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:tmtfinancialconnect/buildStructure.dart';
+import 'package:tmtfinancialconnect/post_page.dart';
 
 class DropDownMap extends StatefulWidget {
-  const DropDownMap({Key? key, this.lastMap = 0}) : super(key: key);
-  final int lastMap;
+  const DropDownMap({Key? key, required this.index}) : super(key: key);
+  final int index;
 
   @override
   State<DropDownMap> createState() => _DropDownMapState();
 }
 
 class _DropDownMapState extends State<DropDownMap> {
-  String dropdownValue = 'Please Select';
+  // String dropdownValue = 'Please Select';
+
+  List<String> itemArray = <String>[
+    'Please Select',
+    'Revenue',
+    'Cost of Goods Sold',
+    'Labor',
+    'Operating Expenses',
+    'Other Income'
+  ];
 
   @override
   Widget build(BuildContext context) {
+    int finalMap = finalStructure?.all![widget.index].map ?? 0;
+
+    print(finalMap);
+    print(finalMap.runtimeType);
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: itemArray[finalMap],
       icon: const Icon(
         Icons.keyboard_arrow_down_rounded,
         color: Colors.red,
@@ -28,17 +43,13 @@ class _DropDownMapState extends State<DropDownMap> {
       ),
       onChanged: (String? newValue) {
         setState(() {
-          dropdownValue = newValue!;
+          print('&%&%&%&%&%&%&%&%');
+          print(newValue);
+          finalStructure?.all![widget.index].map =
+              itemArray.indexOf(newValue as String);
         });
       },
-      items: <String>[
-        'Please Select',
-        'Revenue',
-        'Cost of Goods Sold',
-        'Labor',
-        'Operating Expenses',
-        'Other Income'
-      ].map<DropdownMenuItem<String>>((String value) {
+      items: itemArray.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),

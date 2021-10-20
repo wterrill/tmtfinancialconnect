@@ -1,0 +1,211 @@
+
+
+option = 
+{
+   "Name":"AccountingStandard",
+   "Value":"GAAP"
+},
+
+meta = 
+{
+   "Name":"ColKey",
+   "Value":"account"
+}
+
+
+info = 
+{
+   "Attributes":null,
+   "value":,
+   "id":null,
+   "href":null
+},
+
+colDataWithInfo = 
+{
+   "ColData":[
+   info,
+   info,
+   ]
+}
+
+rowDataIntuitWithInfo =
+{
+   "id":null,
+   "parentId":null,
+   "type":1,
+   "group":null,
+   "AnyIntuitObjects":[
+      [
+         info,
+         info
+      ]
+   ]
+},
+
+rowDataIntuitWithColData = 
+{
+   "id":null,
+   "parentId":null,
+   "type":0,
+   "group":"NetIncome",
+   "AnyIntuitObjects":[
+       colDataWithInfo
+   ]
+}
+
+rowDataIntuitWithColAndDoubleNestedRows = 
+{
+   "id":null,
+   "parentId":null,
+   "type":0,
+   "group":"Expenses",
+   "AnyIntuitObjects":[
+       colDataWithInfo
+      {
+         "Row":[
+            {
+               "id":null,
+               "parentId":null,
+               "type":0,
+               "group":null,
+               "AnyIntuitObjects":[
+                   colDataWithInfo
+                  {
+                     "Row":[
+                         rowDataIntuitWithInfo
+                     ]
+                  },
+                  colDataWithInfo
+               ]
+            }
+         ]
+      },
+      colDataWithInfo
+   ]
+},
+
+rowDataIntuit = 
+{
+   "id":null,
+   "parentId":null,
+   "type":0,
+   "group":"COGS",
+   "AnyIntuitObjects":[
+       colDataWithInfo
+      {
+         "Row":[
+            {
+               "id":null,
+               "parentId":null,
+               "type":0,
+               "group":null,
+               "AnyIntuitObjects":[
+                   colDataWithInfo
+                  {
+                     "Row":[
+                         rowDataIntuitWithInfo,
+                         rowDataIntuitWithInfo
+                     ]
+                  },
+                  colDataWithInfo
+               ]
+            }
+         ]
+      },
+      colDataWithInfo
+   ]
+},
+
+
+{
+  "Header":{
+     "Time":"2021-10-01T20":"26":"16 00":00,
+     "ReportName":"ProfitAndLoss",
+     "DateMacro":"this calendar year-to-date",
+     "ReportBasis":1,
+     "StartPeriod":2021-01-01,
+     "EndPeriod":2021-10-01,
+     "SummarizeColumnsBy":"Total",
+     "Currency":"USD",
+     "Customer":null,
+     "Vendor":null,
+     "Employee":null,
+     "AnyIntuitObject":null,
+     "Class":null,
+     "Department":null,
+     "Option":[
+        option,
+        option
+     ]
+  },
+  "Columns":[
+     {
+        "ColTitle":,
+        "ColType":"Account",
+        "MetaData":[
+           meta
+        ],
+        "Columns":null
+     },
+     {
+        "ColTitle":"Total",
+        "ColType":"Money",
+        "MetaData":[
+           meta
+        ],
+        "Columns":null
+     }
+  ],
+  "Rows":[
+     {
+        "id":null,
+        "parentId":null,
+        "type":0,
+        "group":"Income",
+        "AnyIntuitObjects":[
+           colDataWithInfo
+           {
+              "Row":[
+                 rowDataIntuitWithInfo
+              ]
+           },
+           colDataWithInfo
+        ]
+     },
+     {
+        "id":null,
+        "parentId":null,
+        "type":0,
+        "group":"COGS",
+        "AnyIntuitObjects":[
+            colDataWithInfo
+           {
+              "Row":[
+                 {
+                    "id":null,
+                    "parentId":null,
+                    "type":0,
+                    "group":null,
+                    "AnyIntuitObjects":[
+                        colDataWithInfo
+                       {
+                          "Row":[
+                              rowDataIntuitWithInfo,
+                              rowDataIntuitWithInfo
+                          ]
+                       },
+                       colDataWithInfo
+                    ]
+                 }
+              ]
+           },
+           colDataWithInfo
+        ]
+     },
+     rowDataIntuitWithInfo
+     rowDataIntuitWithColAndDoubleNestedRows
+     rowDataIntuitWithColData,
+     rowDataIntuitWithColData
+  ]
+}

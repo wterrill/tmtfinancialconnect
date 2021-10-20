@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:tmtfinancialconnect/buildStructure.dart';
 import 'dart:convert';
 
 import 'package:tmtfinancialconnect/financial_dashboard.dart';
+
+import 'http_api.dart';
+
+BuildStructure? finalStructure;
 
 class PostPage extends StatelessWidget {
   const PostPage({Key? key, required this.data}) : super(key: key);
@@ -9,16 +15,9 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(data);
-    // JsonEncoder encoder = new JsonEncoder.withIndent('    ');
-    // String prettyprint = encoder.convert(data);
-    // print(prettyprint);
-    dynamic jsonData = json.decode(data);
-    print(jsonData);
-    // JsonEncoder encoder = new JsonEncoder.withIndent('    ');
-    // String prettyprint = encoder.convert(jsonData);
+    // BuildStructure buildStructure = BuildStructure.fromJson(data);
+    finalStructure = BuildStructure.fromJson(data);
 
-    // prettyprint.split('\n').forEach((element) => print(element));
     return Scaffold(
       appBar: AppBar(
         title: Text('post page'),
@@ -28,6 +27,19 @@ class PostPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FinancialDashboard(),
+            TextButton(
+                onPressed: () {
+                  print('pressed');
+                  HttpApi http = HttpApi();
+                  dynamic beer = http.postData('title');
+                  beer.then((Response val) {
+                    print('%%%%%%%%%%%%-------');
+                    print('response from server received');
+                    print(val.body);
+                    print('%%%%%%%%%%%%-------');
+                  });
+                },
+                child: Text('Submit')),
             SelectableText(json.decode(data).toString()),
           ],
         ),
