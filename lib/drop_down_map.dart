@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tmtfinancialconnect/buildStructure.dart';
+import 'package:tmtfinancialconnect/configuration.dart';
 import 'package:tmtfinancialconnect/post_page.dart';
 
 class DropDownMap extends StatefulWidget {
@@ -12,15 +13,6 @@ class DropDownMap extends StatefulWidget {
 
 class _DropDownMapState extends State<DropDownMap> {
   // String dropdownValue = 'Please Select';
-
-  List<String> itemArray = <String>[
-    'Please Select',
-    'Revenue',
-    'Cost of Goods Sold',
-    'Labor',
-    'Operating Expenses',
-    'Other Income'
-  ];
 
   @override
   Widget build(BuildContext context) {

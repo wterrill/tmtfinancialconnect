@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tmtfinancialconnect/account_map.dart';
+import 'package:tmtfinancialconnect/configuration.dart';
 import 'package:tmtfinancialconnect/drop_down_map.dart';
 import 'package:intl/intl.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,7 +35,13 @@ class FinancialDashboard extends StatelessWidget {
                   child: new Text('Need Help?',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold)),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPopupDialog(context, 'Show Help', 'Needs Help'),
+                    );
+                  },
                 ),
               ],
             ),
@@ -81,7 +88,25 @@ class FinancialDashboard extends StatelessWidget {
                                     DropDownMap(
                                       index: index,
                                     ),
-                                    FaIcon(FontAwesomeIcons.questionCircle),
+                                    GestureDetector(
+                                      child: FaIcon(
+                                          FontAwesomeIcons.questionCircle),
+                                      onTap: () {
+                                        print('hello');
+                                        print(
+                                            '$index tapped: ${finalStructure?.all?[index].map}');
+                                        print(
+                                            '${itemArray[finalStructure?.all?[index].map as int]}');
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              _buildPopupDialog(
+                                                  context,
+                                                  '${itemArray[finalStructure?.all?[index].map as int]}',
+                                                  'Category Help'),
+                                        );
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
@@ -98,4 +123,26 @@ class FinancialDashboard extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildPopupDialog(BuildContext context, String data, String heading) {
+  return new AlertDialog(
+    title: Text(heading),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(data),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Close'),
+      ),
+    ],
+  );
 }
